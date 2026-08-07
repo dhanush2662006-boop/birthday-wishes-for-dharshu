@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Dharshni!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #fdf6e9;
+    --paper-line: #d9c9a3;
+    --margin-red: #d8555a;
+    --ink: #2e2a26;
+    --ink-soft: #5b5147;
+    --gold: #e0a83e;
+    --check-green: #4c8c5e;
+    --star-pink: #e07a9c;
+    --shadow: rgba(46,42,38,0.18);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(var(--paper) 0px, var(--paper) 34px, var(--paper-line) 35px),
+      var(--paper);
+    background-size: 100% 35px;
+    font-family:'Patrick Hand', cursive;
+    color:var(--ink);
+    position:relative;
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    top:0; left:44px;
+    width:2px; height:100%;
+    background:var(--margin-red);
+    opacity:0.55;
+    z-index:0;
+  }
+  @media (max-width:520px){
+    body::before{ left:26px; }
+  }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:48px 28px 80px 68px;
+    position:relative;
+    z-index:1;
+  }
+  @media (max-width:520px){
+    .wrap{ padding:36px 18px 60px 44px; }
+  }
+
+  .confetti{
+    position:fixed;
+    top:-40px;
+    font-size:20px;
+    animation:fall linear infinite;
+    z-index:0;
+    opacity:0.85;
+    pointer-events:none;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) rotate(360deg); }
+  }
+  .burst{
+    position:fixed;
+    font-size:22px;
+    z-index:5;
+    pointer-events:none;
+    animation:burstFall 1.6s ease-out forwards;
+  }
+  @keyframes burstFall{
+    0%{ transform:translateY(0) scale(0.6); opacity:1; }
+    100%{ transform:translateY(60vh) scale(1.1) rotate(200deg); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .confetti, .burst{ animation:none; display:none; }
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    background:#fff8e8;
+    border:1.5px dashed var(--gold);
+    display:inline-block;
+    padding:5px 14px;
+    border-radius:20px;
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:clamp(48px, 11vw, 84px);
+    line-height:1;
+    margin:0 0 6px;
+    color:var(--margin-red);
+    transform:rotate(-1.5deg);
+  }
+  .sub{
+    font-size:22px;
+    color:var(--ink-soft);
+    margin-bottom:0;
+  }
+
+  /* Score tracker */
+  .score-bar{
+    position:sticky;
+    top:12px;
+    z-index:4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#fffdf7;
+    border:2px solid var(--ink);
+    border-radius:30px;
+    padding:8px 18px;
+    box-shadow:4px 4px 0 var(--shadow);
+    width:fit-content;
+    margin:0 auto 30px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.5px;
+  }
+  .score-bar span.count{
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    color:var(--margin-red);
+  }
+
+  .instructions{
+    text-align:center;
+    font-size:19px;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+  }
+
+  .answer-sheet{
+    background:#fffdf7;
+    border:2px solid var(--ink);
+    border-radius:6px;
+    box-shadow: 6px 6px 0 var(--shadow);
+    padding:26px 24px 22px;
+    margin:38px 0;
+    position:relative;
+    transform:rotate(0.6deg);
+  }
+  .sheet-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-bottom:1px dashed var(--paper-line);
+    padding-bottom:10px;
+    margin-bottom:16px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .qa{
+    margin-bottom:14px;
+    border-bottom:1px dashed var(--paper-line);
+    padding-bottom:14px;
+  }
+  .qa:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .qa .q{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .reveal-btn{
+    font-family:'Patrick Hand', cursive;
+    font-size:18px;
+    background:#fff;
+    border:2px dashed var(--margin-red);
+    color:var(--margin-red);
+    padding:7px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .reveal-btn:hover{ background:#fff2ef; }
+  .reveal-btn:active{ transform:scale(0.96); }
+  .reveal-btn:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+
+  .qa .a{
+    font-size:24px;
+    line-height:1.35;
+    position:relative;
+    padding-left:2px;
+    display:none;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity 0.35s ease, transform 0.35s ease;
+  }
+  .qa .a.show{
+    display:block;
+    opacity:1;
+    transform:translateY(0);
+  }
+  .tick{
+    color:var(--check-green);
+    font-weight:bold;
+    margin-right:6px;
+  }
+  .marks{
+    float:right;
+    font-family:'Caveat', cursive;
+    color:var(--margin-red);
+    font-size:22px;
+    border:1.5px solid var(--margin-red);
+    border-radius:50%;
+    width:34px;height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    transform:rotate(-6deg);
+  }
+
+  .memory-block{
+    margin:34px 0;
+    font-size:22px;
+    line-height:1.6;
+    color:var(--ink);
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transition:opacity 0.5s ease, max-height 0.6s ease;
+  }
+  .memory-block.show{ opacity:1; max-height:400px; }
+  .memory-block .stamp{
+    display:inline-block;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--star-pink);
+    padding:4px 10px;
+    border-radius:4px;
+    transform:rotate(-3deg);
+    margin-bottom:10px;
+  }
+
+  /* Locked gift / wish reveal */
+  .gift-zone{
+    text-align:center;
+    margin:44px 0;
+  }
+  .gift-btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:0.5px;
+    background:var(--gold);
+    color:#fff;
+    border:none;
+    padding:14px 30px;
+    border-radius:30px;
+    cursor:pointer;
+    box-shadow:4px 4px 0 var(--shadow);
+    transition:transform 0.15s ease, opacity 0.2s ease;
+  }
+  .gift-btn:hover{ transform:translateY(-2px); }
+  .gift-btn:active{ transform:scale(0.97); }
+  .gift-btn:disabled{
+    background:#cfc6b3;
+    cursor:not-allowed;
+    box-shadow:none;
+  }
+  .gift-hint{
+    font-size:16px;
+    color:var(--ink-soft);
+    margin-top:10px;
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  .wish-card{
+    background:linear-gradient(180deg,#fffdf7,#fff8e8);
+    border:2px dashed var(--gold);
+    border-radius:10px;
+    padding:26px 22px;
+    margin:38px 0;
+    text-align:center;
+    display:none;
+    opacity:0;
+    transform:scale(0.92);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .wish-card.show{
+    display:block;
+    opacity:1;
+    transform:scale(1);
+  }
+  .wish-card h2{
+    font-family:'Caveat', cursive;
+    font-size:38px;
+    margin:0 0 12px;
+    color:var(--star-pink);
+  }
+  .wish-card p{
+    font-size:21px;
+    line-height:1.6;
+    margin:0;
+    color:var(--ink);
+  }
+
+  .cake-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    font-size:40px;
+    margin:20px 0 30px;
+  }
+  .cake-row span{
+    display:inline-block;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  .cake-row span:nth-child(2){ animation-delay:0.3s; }
+  .cake-row span:nth-child(3){ animation-delay:0.6s; }
+  .cake-row span:nth-child(4){ animation-delay:0.9s; }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cake-row span{ animation:none; }
+  }
+
+  footer{
+    text-align:center;
+    margin-top:44px;
+    font-family:'Caveat', cursive;
+    font-size:26px;
+    color:var(--ink-soft);
+    display:none;
+  }
+  footer.show{ display:block; }
+  footer .from{
+    display:block;
+    margin-top:6px;
+    font-size:20px;
+    color:var(--ink);
+  }
+
+  .taped-note{
+    background:#fff;
+    border:1px solid var(--paper-line);
+    box-shadow:3px 3px 0 var(--shadow);
+    padding:16px 18px;
+    font-size:20px;
+    line-height:1.55;
+    margin:30px 0;
+    position:relative;
+    display:none;
+  }
+  .taped-note.show{ display:block; }
+  .taped-note::before{
+    content:"";
+    position:absolute;
+    top:-10px; left:50%;
+    transform:translateX(-50%) rotate(-2deg);
+    width:70px; height:22px;
+    background:rgba(224,168,62,0.45);
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow">Exam Partner ✦ Best Friend</span>
+    <h1>Happy Birthday<br>Dharshni!</h1>
+    <p class="sub">Ready ah? Paper start pannalam 🎂</p>
+  </header>
+
+  <div class="cake-row">
+    <span>🎂</span><span>🎉</span><span>🎈</span><span>✨</span>
+  </div>
+
+  <div class="score-bar">
+    <span>Score:</span> <span class="count" id="scoreCount">0</span> <span>/ 4</span>
+  </div>
+  <p class="instructions">Ella question ah click pannu, answer reveal aagum. Full marks vaangina, oru surprise wait pannudhu 👀</p>
+
+  <section class="answer-sheet">
+    <div class="sheet-title">
+      <span>Friendship Exam — Answer Sheet</span>
+      <span>Roll No: Best Friend</span>
+    </div>
+
+    <div class="qa">
+      <div class="q">Q1. Naan padikama irundhalum yaaru help pannuvanga? (2 marks)</div>
+      <button class="reveal-btn" data-marks="2">Reveal Answer</button>
+      <div class="a"><span class="tick">✓</span>Dharshni thaan! <span class="marks">2</span></div>
+    </div>
+
+    <div class="qa">
+      <div class="q">Q2. Naan exam pass panna reason enna? (2 marks)</div>
+      <button class="reveal-btn" data-marks="2">Reveal Answer</button>
+      <div class="a"><span class="tick">✓</span>Unga 2-marks answers thaan madam! <span class="marks">2</span></div>
+    </div>
+  </section>
+
+  <div class="memory-block" id="memoryBlock">
+    <span class="stamp">Memory Unlocked</span><br>
+    Namma rendu pera exam partners nu sonna adhu just oru word illa da 📖 —
+    naan padikama vandhalum, un 2-marks answers vechi thaan naan pass aiten.
+    Adhu enna oru simple help ah irundhalum, enakku adhu periya support.
+    College la unna meet pannumbodhu ella stress um poiduchu, un face paakura
+    matham oru feel-good vibe than.
+  </div>
+
+  <div class="gift-zone">
+    <button class="gift-btn" id="giftBtn" disabled>🎁 Open Birthday Wish</button>
+    <p class="gift-hint" id="giftHint">Locked — full marks vாங்கினா thaan open aagum</p>
+  </div>
+
+  <div class="wish-card" id="wishCard">
+    <h2>Happy Birthday da Dharshni! 🎊</h2>
+    <p>
+      Indha varusham unakku full marks nu solla mudiyaadhu, adha vida best
+      irukanum — health, happiness, success ellame full ah kedaikanum.
+      Nee epdiye irundhalum, naan pass aagara reason nu mattum illa,
+      naan santhosham ah irukara reason nu kooda nee than. Same feel-good
+      person ah, same exam-hall lucky charm ah, epavume irunga! 💛
+    </p>
+  </div>
+
+  <div class="taped-note" id="tapedNote">
+    P.S. — Adutha exam ellam kooda 2-marks help venumnu already book pannitten,
+    apparam treat unga side than! 😄🎂
+  </div>
+
+  <footer id="footerBlock">
+    Happy Birthday!
+    <span class="from">— from your exam partner in crime 🎓</span>
+  </footer>
+
+</div>
+
+<script>
+  const emojis = ['🎈','✨','🎉','⭐','🎊'];
+  const body = document.body;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!reduceMotion){
+    for(let i=0;i<16;i++){
+      const el = document.createElement('div');
+      el.className = 'confetti';
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.animationDuration = (6 + Math.random()*6) + 's';
+      el.style.animationDelay = (Math.random()*8) + 's';
+      el.style.fontSize = (14 + Math.random()*14) + 'px';
+      body.appendChild(el);
+    }
+  }
+
+  function burstConfetti(){
+    if(reduceMotion) return;
+    for(let i=0;i<10;i++){
+      const el = document.createElement('div');
+      el.className = 'burst';
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = (30 + Math.random()*40) + 'vw';
+      el.style.top = '20vh';
+      el.style.animationDelay = (Math.random()*0.3) + 's';
+      body.appendChild(el);
+      setTimeout(()=> el.remove(), 2000);
+    }
+  }
+
+  let score = 0;
+  const total = 4;
+  const scoreCount = document.getElementById('scoreCount');
+  const giftBtn = document.getElementById('giftBtn');
+  const giftHint = document.getElementById('giftHint');
+  const memoryBlock = document.getElementById('memoryBlock');
+
+  document.querySelectorAll('.reveal-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const answer = btn.nextElementSibling;
+      if(answer.classList.contains('show')) return;
+      answer.classList.add('show');
+      btn.disabled = true;
+      btn.style.opacity = '0.4';
+      score += parseInt(btn.dataset.marks, 10);
+      scoreCount.textContent = score;
+
+      if(score >= total){
+        memoryBlock.classList.add('show');
+        giftBtn.disabled = false;
+        giftHint.textContent = 'Full marks! Click to open your surprise 🎉';
+      }
+    });
+  });
+
+  giftBtn.addEventListener('click', ()=>{
+    document.getElementById('wishCard').classList.add('show');
+    document.getElementById('tapedNote').classList.add('show');
+    document.getElementById('footerBlock').classList.add('show');
+    giftBtn.style.display = 'none';
+    giftHint.textContent = '';
+    burstConfetti();
+    document.getElementById('wishCard').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+
+</body>
+</html>
